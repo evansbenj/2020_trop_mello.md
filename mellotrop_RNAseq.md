@@ -5,6 +5,11 @@ In this directory we have the raw data:
 ```
 /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA
 ```
+after copying the data, I had to change the permissions of each sample directory to avoid getting a disk quota error like this:
+```
+chmod g+s Sample_BJE3796BRAIN
+```
+
 I am trimming it with trimmomatic (after copying this file to the same directory as the sbatch file `~/projects/rrg-ben/ben/2017_SEAsian_macaques/bin/Trimmomatic-0.36/adapters/TruSeq2-PE.fa`:
 ```
 #!/bin/sh
