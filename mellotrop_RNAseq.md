@@ -77,6 +77,8 @@ Trinity --seqType fq --left /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/me
 
 # Count with Kallisto
 
+Descriptions are here: https://pachterlab.github.io/kallisto/starting.html
+
 ```
 module load StdEnv/2020  gcc/9.3.0
 module load kallisto/0.46.1
@@ -84,7 +86,9 @@ module load kallisto/0.46.1
 kallisto index -i /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/melltrop_transcriptome_trinityOut
 ```
 
+# DE analysis with Sleuth
 
+Description is here: https://pachterlab.github.io/sleuth/walkthroughs
 
 #Transcript abundance quantification (from Xue)
 ```
