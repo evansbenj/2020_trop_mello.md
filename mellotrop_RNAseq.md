@@ -5,7 +5,7 @@ In this directory we have the raw data:
 ```
 /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA
 ```
-I am trimming it with trimmomatic:
+I am trimming it with trimmomatic (after copying this file to the same directory as the sbatch file `~/projects/rrg-ben/ben/2017_SEAsian_macaques/bin/Trimmomatic-0.36/adapters/TruSeq2-PE.fa`:
 ```
 #!/bin/sh
 #SBATCH --job-name=trimmomatic
@@ -28,7 +28,7 @@ for file in $1/*_R1*.fastq.gz ; do         # Use ./* ... NEVER bare *
   if [ -e "$file" ] ; then   # Check whether file exists.
 	java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE ${file::-14}1${file:(-13)} ${file::-14}2${file:(-13)} ${file
 ::-14}1.trimmed.fq.gz ${file::-14}1.trimmed_single.fq.gz ${file::-14}2.trimmed.fq.gz ${file::-14}2.trimmed_single.fq.gz I
-LLUMINACLIP:~/projects/rrg-ben/ben/2017_SEAsian_macaques/bin/Trimmomatic-0.36/adapters/TruSeq2-PE.fa:2:30:10 LEADING:3 TR
+LLUMINACLIP:TruSeq2-PE.fa:2:30:10 LEADING:3 TR
 AILING:3 SLIDINGWINDOW:4:15 MINLEN:36
   fi
 done
