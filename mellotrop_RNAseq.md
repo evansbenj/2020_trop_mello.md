@@ -72,16 +72,22 @@ module load bowtie2/2.3.4.3
 module load jellyfish/2.2.6
 module load trinity/2.8.4
 
-Trinity --seqType fq --left /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/me
-llotrop_RNA/assembly/all_R1.fq.gz --right /home/ben/projects/rrg-ben/ben/2020_me
-llotrop_RNA/mellotrop_RNA/assembly/all_R2.fq.gz --CPU 20 --full_cleanup --max_me
-mory 200G --min_kmer_cov 2 --include_supertranscripts --output /home/ben/project
-s/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/melltrop_transcriptome_t
-rinityOut
+Trinity --seqType fq --left /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/all_R1.fq.gz --right /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/all_R2.fq.gz --CPU 20 --full_cleanup --max_memory 200G --min_kmer_cov 2 --include_supertranscripts --output /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/melltrop_transcriptome_trinityOut
 ```
 
 # Count with Kallisto
 
+```
 module load StdEnv/2020  gcc/9.3.0
 module load kallisto/0.46.1
+# index the transcriptome
+kallisto index -i /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/melltrop_transcriptome_trinityOut
+```
+Now quantify for each sample:
+```
+kallisto quant -i /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/melltrop_transcriptome_trinityOut.idx -o Sample_name XX.R1.fq.gz XX.R2.fq.gz
+
+# -o Sample_name: Sample_name will be name of the output folder produced from this analysis
+# XX.R1.fq.gz XX.R2.fq.gz : input FASTQ files
+```
 
