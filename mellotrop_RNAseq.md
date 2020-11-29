@@ -111,8 +111,9 @@ kallisto quant -i /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RN
 ```
 
 
+https://www.bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf
 
-Below is the R script from Xue that was used for the trop tads.  I need to modify this so that we examine the interaction between sex biased expression and tissue type (brain, liver, heart).
+Below is the R script from Xue that was used for edgeR analysis of the trop tads.  I need to modify this so that we examine the interaction between sex biased expression and tissue type (brain, liver, heart).
 ```
 library(tidyverse)
 library(edgeR)
