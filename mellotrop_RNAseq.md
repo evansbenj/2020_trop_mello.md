@@ -48,3 +48,40 @@ in this directory:
 ```
 /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly
 ```
+# Assemble with Trinity
+
+
+```
+#!/bin/sh
+#SBATCH --job-name=trinity
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=20
+#SBATCH --time=48:00:00
+#SBATCH --mem=256gb
+#SBATCH --output=trinity.%J.out
+#SBATCH --error=trinity.%J.err
+#SBATCH --account=def-ben
+
+
+module load nixpkgs/16.09  gcc/7.3.0 nixpkgs/16.09
+module load openmpi/3.1.2
+module load samtools/1.9
+module load salmon/0.11.3
+module load bowtie2/2.3.4.3
+module load jellyfish/2.2.6
+module load trinity/2.8.4
+
+Trinity --seqType fq --left /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/me
+llotrop_RNA/assembly/all_R1.fq.gz --right /home/ben/projects/rrg-ben/ben/2020_me
+llotrop_RNA/mellotrop_RNA/assembly/all_R2.fq.gz --CPU 20 --full_cleanup --max_me
+mory 200G --min_kmer_cov 2 --include_supertranscripts --output /home/ben/project
+s/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/melltrop_transcriptome_t
+rinityOut
+```
+
+# Count with Kallisto
+
+module load StdEnv/2020  gcc/9.3.0
+module load kallisto/0.46.1
+
