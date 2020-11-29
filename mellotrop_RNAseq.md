@@ -38,3 +38,13 @@ AILING:3 SLIDINGWINDOW:4:15 MINLEN:36
   fi
 done
 ```
+
+After trimming all the files, I concatenated the forward reads. And then I concatenated the reverse reads:
+```
+cat ../S*/*_R1.trimmed_00*.fastq.gz > all_R1.fq.gz
+cat ../S*/*_R2.trimmed_00*.fastq.gz > all_R2.fq.gz
+```
+in this directory:
+```
+/home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly
+```
