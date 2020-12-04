@@ -82,11 +82,23 @@ Descriptions are here: https://pachterlab.github.io/kallisto/starting.html
 ```
 module load StdEnv/2020  gcc/9.3.0
 module load kallisto/0.46.1
-# index the transcriptome
+# index the transcriptome can be done directly with kallisto
 kallisto index -i /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/melltrop_transcriptome_trinityOut
 
-# on info
+# or via a perl script that comes with trinity (on info):
 perl /usr/local/trinity/trinityrnaseq-Trinity-v2.4.0/util/align_and_estimate_abundance.pl --transcripts tropicalis_transcriptome_trinityOut.Trinity.fasta --seqType fa --samples_file samplefile.tsv --est_method kallisto --output_dir ./kallisto_denovo/ --trinity_mode --prep_reference
+
+
+# Now for each file count abundances of each transcript
+
+for i in XXX/*_R1_paired.fastq.gz; do name=$(grep -o "XT[0-9]*" <(echo $i));r1=/home/xue/tropicalis_gonad_transcriptome_Dec2018/data/trim/$name\_R1_paired.fastq.gz;r2=/home/xue/tropicalis_gonad_transcriptome_Dec2018/data/trim/$name\_R2_paired.fastq.gz; 
+kallisto quant -i /tropicalis_transcriptome_trinityOut.Trinity.fasta.kallisto_idx  -o /home/xue/tropicalis_gonad_transcriptome_Dec2018/analysis/transcript_expression_raw_count//$name <(gunzip -c $r1) <(gunzip -c $r2);done
+
+
+perl /usr/local/trinity/trinityrnaseq-Trinity-v2.4.0/util/align_and_estimate_abundance.pl --transcripts Trinity.fasta --seqType fq --left reads_1.fq --right reads_2.fq --est_method kallisto --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdir
+
+# in the above command, the `--prep_reference` tells kallisto to index the transcriptome
+
 ```
 
 In the above command, the sample file is this:
