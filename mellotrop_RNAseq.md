@@ -82,8 +82,10 @@ Descriptions are here: https://pachterlab.github.io/kallisto/starting.html
 ```
 module load StdEnv/2020  gcc/9.3.0
 module load kallisto/0.46.1
-# index the transcriptome can be done directly with kallisto
-kallisto index -i /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/mellotrop_RNA/assembly/melltrop_transcriptome_trinityOut
+# index the transcriptome can be done directly with kallisto (the -i flag tells kallisto what to name the index)
+# and the fasta follows this with no flag)
+
+kallisto index -i tropicalis_transcriptome_trinityOut.Trinity.fasta.kallisto_idx ./tropicalis_transcriptome_trinityOut.Trinity.fasta
 
 # or via a perl script that comes with trinity (on info):
 perl /usr/local/trinity/trinityrnaseq-Trinity-v2.4.0/util/align_and_estimate_abundance.pl --transcripts tropicalis_transcriptome_trinityOut.Trinity.fasta --seqType fa --samples_file samplefile.tsv --est_method kallisto --output_dir ./kallisto_denovo/ --trinity_mode --prep_reference
