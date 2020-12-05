@@ -161,12 +161,29 @@ male	male_rep6	../../data/trimmed_RNAseq_data/XT8_R1_paired.fastq.gz	../../data/
 rimmed_RNAseq_data/XT8_R2_paired.fastq.gz
 ```
 
-#Combine the counts for each sample into one matrix
+#Change into "count" directory and combine the counts for each sample into one matrix
 ```
 perl /usr/local/trinity/trinityrnaseq-Trinity-v2.4.0/util/abundance_estimates_to_matrix.pl --est_method kallisto --out_prefix tropicalis_gonad --name_sample_by_basedir --quant_files count_list
 
 ```
 
+The count_list file in the command above looks like this:
+```
+./XT10/abundance.tsv
+./XT17/abundance.tsv
+./XT2_/abundance.tsv
+./XT8_/abundance.tsv
+./XT11/abundance.tsv
+./XT19/abundance.tsv
+./XT3_/abundance.tsv
+./XT9_/abundance.tsv
+./XT13/abundance.tsv
+./XT1_/abundance.tsv
+./XT6_/abundance.tsv
+./XT16/abundance.tsv
+./XT20/abundance.tsv
+./XT7_/abundance.tsv
+```
 
 
 
