@@ -90,17 +90,33 @@ kallisto index -i tropicalis_transcriptome_trinityOut.Trinity.fasta.kallisto_idx
 # or via a perl script that comes with trinity (on info):
 perl /usr/local/trinity/trinityrnaseq-Trinity-v2.4.0/util/align_and_estimate_abundance.pl --transcripts tropicalis_transcriptome_trinityOut.Trinity.fasta --seqType fa --samples_file samplefile.tsv --est_method kallisto --output_dir ./kallisto_denovo/ --trinity_mode --prep_reference
 
-
+```
 # Now for each file count abundances of each transcript
+```
+for file in ../../data/trimmed_RNAseq_data/X*_R1_paired.fastq.gz ; do      
+  if [ -e "$file" ] ; then   # Check whether file exists.
+      r1="${file::${#file}-19}_R1_paired.fastq.gz"
+      r2="${file::${#file}-19}_R2_paired.fastq.gz"
+      kallisto quant -i ./tropicalis_transcriptome_trinityOut.Trinity.fasta.kallisto_idx -o 
+./counts/${file:31:4} ${r1} ${r2}
+  fi
+done
+```
 
-for i in XXX/*_R1_paired.fastq.gz; do name=$(grep -o "XT[0-9]*" <(echo $i));r1=/home/xue/tropicalis_gonad_transcriptome_Dec2018/data/trim/$name\_R1_paired.fastq.gz;r2=/home/xue/tropicalis_gonad_transcriptome_Dec2018/data/trim/$name\_R2_paired.fastq.gz; 
-kallisto quant -i /tropicalis_transcriptome_trinityOut.Trinity.fasta.kallisto_idx  -o /home/xue/tropicalis_gonad_transcriptome_Dec2018/analysis/transcript_expression_raw_count//$name <(gunzip -c $r1) <(gunzip -c $r2);done
-
-
-perl /usr/local/trinity/trinityrnaseq-Trinity-v2.4.0/util/align_and_estimate_abundance.pl --transcripts Trinity.fasta --seqType fq --left reads_1.fq --right reads_2.fq --est_method kallisto --aln_method bowtie --trinity_mode --prep_reference --output_dir rsem_outdir
-
-# in the above command, the `--prep_reference` tells kallisto to index the transcriptome
-
+# I think this does the same thing but runs via trinity
+```
+for file in ../../data/trimmed_RNAseq_data/X*_R1_paired.fastq.gz ; do      
+  if [ -e "$file" ] ; then   # Check whether file exists.
+      r1="${file::${#file}-19}_R1_paired.fastq.gz"
+      r2="${file::${#file}-19}_R2_paired.fastq.gz"
+      kallisto quant -i ./tropicalis_transcriptome_trinityOut.Trinity.fasta.kallisto_idx -o 
+./counts/ ${r1} ${r2}
+      perl /usr/local/trinity/trinityrnaseq-Trinity-v2.4.0/util/align_and_estimate_abundance
+.pl --transcripts Trinity.fasta --seqType fq --left ${r1} --right ${r2} --est_method kallist
+o --aln_method bowtie --samples_file troptad_samples.txt --trinity_mode --output_dir counts_
+trinity
+  fi
+done
 ```
 
 In the above command, the sample file is this:
@@ -114,6 +130,38 @@ In the above command, the sample file is this:
 #                                        cond_B    cond_B_rep2    B_rep2_left.fq    B_rep2_right.fq
 ```
 
+```
+female	female_rep1	../../data/trimmed_RNAseq_data/XT2_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT2_R2_paired.fastq.gz
+female	female_rep2	../../data/trimmed_RNAseq_data/XT3_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT3_R2_paired.fastq.gz
+female	female_rep3	../../data/trimmed_RNAseq_data/XT6_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT6_R2_paired.fastq.gz
+female	female_rep4	../../data/trimmed_RNAseq_data/XT9_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT9_R2_paired.fastq.gz
+female	female_rep5	../../data/trimmed_RNAseq_data/XT10_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT10_R2_paired.fastq.gz
+female	female_rep6	../../data/trimmed_RNAseq_data/XT11_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT11_R2_paired.fastq.gz
+female	female_rep7	../../data/trimmed_RNAseq_data/XT16_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT16_R2_paired.fastq.gz
+female	female_rep8	../../data/trimmed_RNAseq_data/XT17_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT17_R2_paired.fastq.gz
+female	female_rep9	../../data/trimmed_RNAseq_data/XT20_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT20_R2_paired.fastq.gz
+male	male_rep1	../../data/trimmed_RNAseq_data/XT3_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT3_R2_paired.fastq.gz
+male	male_rep2	../../data/trimmed_RNAseq_data/XT9_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT9_R2_paired.fastq.gz
+male	male_rep3	../../data/trimmed_RNAseq_data/XT11_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT11_R2_paired.fastq.gz
+male	male_rep4	../../data/trimmed_RNAseq_data/XT20_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT20_R2_paired.fastq.gz
+male	male_rep5	../../data/trimmed_RNAseq_data/XT7_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT7_R2_paired.fastq.gz
+male	male_rep6	../../data/trimmed_RNAseq_data/XT8_R1_paired.fastq.gz	../../data/t
+rimmed_RNAseq_data/XT8_R2_paired.fastq.gz
+```
 
 # DE analysis with edgeR
 
