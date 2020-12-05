@@ -109,8 +109,6 @@ for file in ../../data/trimmed_RNAseq_data/X*_R1_paired.fastq.gz ; do
   if [ -e "$file" ] ; then   # Check whether file exists.
       r1="${file::${#file}-19}_R1_paired.fastq.gz"
       r2="${file::${#file}-19}_R2_paired.fastq.gz"
-      kallisto quant -i ./tropicalis_transcriptome_trinityOut.Trinity.fasta.kallisto_idx -o 
-./counts/ ${r1} ${r2}
       perl /usr/local/trinity/trinityrnaseq-Trinity-v2.4.0/util/align_and_estimate_abundance
 .pl --transcripts tropicalis_transcriptome_trinityOut.Trinity.fasta --seqType fq --left ${r1} --right ${r2} --est_method kallist
 o --aln_method bowtie --samples_file troptad_samples.txt --trinity_mode --output_dir counts_
