@@ -103,7 +103,7 @@ for file in ../../data/trimmed_RNAseq_data/X*_R1_paired.fastq.gz ; do
 done
 ```
 
-# I think this does the same thing but runs via trinity
+# This does the same thing but runs via a script from Trinity
 ```
 for file in ../../data/trimmed_RNAseq_data/X*_R1_paired.fastq.gz ; do      
   if [ -e "$file" ] ; then   # Check whether file exists.
