@@ -14,3 +14,11 @@
 #### Challenges include chimerical contigs (that are made of sequence from each subgenome), also heterozygosity could cause issues
 #### work from results from Step 1
 
+## Germany genome
+Assembly is here:
+```
+/home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/Germany_genome
+```
+explanation of versions is here:
+https://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/output/generating
+
