@@ -7,8 +7,8 @@
 * Do pseudogenized genes in XL also tend to be pseudogenized in X. mellotrop?
 
 ## Step 1: For each contig, estimate distance to trop genome
-## Expectation: there should be a bimodal distribution of distances that correspond to each subgenome.  Depending on the level of divergence, these distributions probably will overlap
+### Expectation: there should be a bimodal distribution of distances that correspond to each subgenome.  Depending on the level of divergence, these distributions probably will overlap
 
 ## Step 2: For each genomic region in trop, assess how many contigs map to that region; use distances to infer which subgenome they are derived from
-## Challenges include chimerical contigs (that are made of sequence from each subgenome), also heterozygosity could cause issues
+### Challenges include chimerical contigs (that are made of sequence from each subgenome), also heterozygosity could cause issues
 
