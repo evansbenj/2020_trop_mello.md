@@ -36,3 +36,9 @@ samtools view -S -b alignments.sam > mello_masurca_to_XTv10.bam
 samtools sort mello_masurca_to_XTv10.bam -o mello_masurca_to_XTv10_sorted.bam
 samtools index mello_masurca_to_XTv10_sorted.bam
 ```
+
+# Extract Chr7 and index
+```
+samtools view -b mello_masurca_to_XTv10_sorted.bam Chr7 > Chr7_mello_masurca_to_XTv10_sorted.bam
+samtools index Chr7_mello_masurca_to_XTv10_sorted.bam
+```
