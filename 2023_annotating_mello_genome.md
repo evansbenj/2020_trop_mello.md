@@ -7,10 +7,14 @@ First extract exons from trop gff file:
 ```
 grep 'exon' XENTR_10.0_Xenbase_longest.gff3 > XENTR_10.0_Xenbase_longest_exonsonly.gff3
 ```
+Now make a new bed file that also has the name of each exon in it:
+```
+cut -f1,4,5,9 XENTR_10.0_Xenbase_longest_exonsonly.gff3 > XENTR_10.0_Xenbase_longest_exonsonly_names.gff
+```
 Now use this to extract fasta seqs for each exon:
 ```
 module load bedtools
-bedtools getfasta -fi XENTR_10.0_genome.fasta -bed XENTR_10.0_Xenbase_longest_exonsonly.gff3 -fo XENTR_10.0_genome_exonsonly.fasta
+bedtools getfasta -fi XENTR_10.0_genome.fasta -bed XENTR_10.0_Xenbase_longest_exonsonly_names.gff -fo XENTR_10.0_genome_exonsonly.fasta
 ```
 This yeilds 236189 exons from trop.
 
