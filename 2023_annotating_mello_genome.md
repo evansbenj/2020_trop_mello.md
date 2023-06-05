@@ -19,3 +19,8 @@ Now use this to identify top hits for each trop exon:
 module load StdEnv/2020 minimap2/2.24
 minimap2 -t8 reference.fasta query.fasta >alignments.sam 
 ```
+
+THis is the mello genome assembly I am working with (for now at least):
+```
+/home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/assembly_Germanydata_10kb_matepair_plus_pacbio_genome.fa
+```
