@@ -3,14 +3,14 @@
 path:
 ```
 /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/assembly_Germanydata_10kb_matepair_plus_pacbio/CA.mr.97.17.15.0.02
-``
+```
 
 finished genome assembly using Germanydata_10kb_matepair_plus_pacbio:
 ```
 /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/assembly_Germanydata_10kb_matepair_plus_pacbio_genome.fa
 ```
 
-This genome assembly only has the Germany paired end data plus the pacbio seqs. It did not use the supernova assembly; those efforts failed on graham and beluga and never got started on cedar
+This genome assembly only has the Germany paired end data plus the pacbio seqs. It did not use the supernova assembly; those efforts failed on graham and beluga and never got started on cedar. But it is better than the other methods I tried based on GAAS
 
 
 ```
