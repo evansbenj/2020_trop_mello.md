@@ -105,3 +105,20 @@ out.sorted_rg.bam BJE3797HEARTAligned.sortedByCoord.out.sorted_rg.bam BJE3803HEA
 3797LIVERAligned.sortedByCoord.out.sorted_rg.bam BJE3803LIVERAligned.sortedByCoord.out.sorted_rg.bam BJE3800LIVERAligned.sort
 edByCoord.out.sorted_rg.bam
 ```
+
+# Problem with mapping Xmello RNA to XT genome
+
+Many reads to not map:
+Total reads:
+```
+samtools view -c BJE3802BRAINAligned.sortedByCoord.out.sorted_rg.bam
+```
+58309590
+
+number unmapped:
+```
+samtools view -c -F 0X04 BJE3802BRAINAligned.sortedByCoord.out.sorted_rg.bam
+```
+48162643
+
+Proportion unmapped: 48162643/58309590 = 82.5% (not good!)
