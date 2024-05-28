@@ -70,7 +70,7 @@ sub MFAtoPHYLIP
 
 # blast XT gene to germany genome
 ```
-module load blast+/2.14.1  StdEnv/2023 gcc/12.3
+module load  StdEnv/2020  gcc/9.3.0 blast+/2.14.0
 blastn -query XT_pars2.fa -db /project/6019307/ben/2020_mellotrop_RNA/Germany_genome/Super_NovaXeno_mega_gt200.fasta_blastable -outfmt 6 -out XT_pars2_to_Germany.out
 ```
 # get coordinates of the matches
