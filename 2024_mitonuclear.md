@@ -98,8 +98,10 @@ mafft --adjustdirectionaccurately all_pars2.fa > all_pars2_aligned.fa
 ```
 # convert aligned file to phylip format
 ```
-./fasta2phylip.pl all_pars2_aligned.fa
+module load StdEnv/2020 emboss/6.6.0
+seqret -sequence all_pars2_aligned.fa  -outseq all_pars2_aligned.phy -osformat phylip
 ```
+
 
 # check distance
 ```
