@@ -105,7 +105,7 @@ seqret -sequence all_pars2_aligned.fa  -outseq all_pars2_aligned.phy -osformat p
 
 # check distance
 ```
-cp all_pars2_aligned.fa infile
+cp all_pars2_aligned.fa.phy infile
 module load StdEnv/2020  intel/2020.1.217 phylip/3.698
 dnadist 
 ```
