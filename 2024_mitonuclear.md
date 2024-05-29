@@ -1,3 +1,7 @@
+# get the coding sequence from xenbase
+# make sure there is a hard return after the sequence
+# make sure it begins with a start (ATG) and a stop codon (TAA, TAG, TGA)
+
 # Mitonuclear interactions and subgenome evolution
 
 Here is a script to convert fasta files to phylip format (modified from https://github.com/josephhughes/Sequence-manipulation/blob/master/Fasta2Phylip.pl)
