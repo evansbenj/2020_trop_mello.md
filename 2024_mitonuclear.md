@@ -94,19 +94,16 @@ bedtools getfasta -fi /project/6019307/ben/2020_mellotrop_RNA/Germany_genome/Sup
 ```
 module load StdEnv/2020 mafft/7.471
 cat XT_pars2.fa mel_pars2.fa > all_pars2.fa
+mafft --adjustdirectionaccurately all_pars2.fa > all_pars2_aligned.fa 
 ```
-# convert to phylip format
+# convert aligned file to phylip format
 ```
 ./fasta2phylip.pl all_pars2_aligned.fa
 ```
 
-# get rid of periods in the names
-```
-sed -i -e 's/\./_/g' all_pars2_aligned.fa.phy
-```
-
 # check distance
 ```
+cp all_pars2_aligned.fa infile
 module load StdEnv/2020  intel/2020.1.217 phylip/3.698
-dnadist
+dnadist 
 ```
