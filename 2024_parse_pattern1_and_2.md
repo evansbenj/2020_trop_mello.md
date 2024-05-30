@@ -29,9 +29,9 @@ use List::MoreUtils qw/ uniq /;
 # pattern 1 and pattern 2 required d1 and d2 be homozygous
 # pattern 1 and pattern 2 required either t1 or t2 be heterozygous and the other be homozygous
 # when t1 is the heterozygous genotype, pattern 1 is defined as d1 being homozygous for one variant in t1 
-# and d2 and t2 are homozygous for the other variant
+# and d2 and t2 are homozygous for the other variant; pattern 1 suggests d1 is closet to t1 than d2 is.
 # when t1 is the heterozygous genotype, pattern 2 is defined as d2 being homozygous for one variant in t1 
-# and d1 and t2 are homozygous for the other variant
+# and d1 and t2 are homozygous for the other variant; pattern 1 suggests d2 is closet to t1 than d1 is.
 # Rationale: 
 # (1) if t1 arose from an ancestor of d1 and d2 before population structure, then pattern 1 and 2 should
 # have similar frequencies
@@ -65,7 +65,7 @@ unless (open(OUTFILE, ">$outputfile"))  {
 	exit;
 }
 print "Creating output file: $outputfile\n";
-print OUTFILE "d1\td2\tt1\tt2\n";
+
 
 my @sexes = split("",$ARGV[1]);
 my @temp;
