@@ -1,5 +1,10 @@
 # Parse pattern1 and pattern 2
 
+Path:
+```
+/home/ben/projects/rrg-ben/ben/2022_Liberia/20_vcfs_after_filtering
+```
+
 ```perl
 #!/usr/bin/env perl
 use strict;
@@ -193,4 +198,71 @@ while ( my $line = <DATAINPUT>) {
 print OUTFILE $pattern1,"\t";
 print OUTFILE $pattern2,"\n";
 close OUTFILE;
+```
+
+# Commando
+```perl
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+
+# this program will execute many combinations of a perl script
+# for each chromosome
+
+# before executing load modules
+# module load StdEnv/2020 perl/5.30.2
+
+
+    
+my @chrs = ("Chr1","Chr2","Chr3","Chr4","Chr5","Chr6","Chr7","Chr8","Chr9","Chr10");
+# make the samples array
+
+my $x; # this will be the position of d1
+my $y; # this will be the position of d2
+my $in_out_base;
+my $in_out;
+my @samples;
+for ($x = 0 ; $x <= 17 ; $x++ ) {
+	$in_out_base=();
+	$in_out=();
+	# add zeros before 1
+	for(my $i = 0; $i < $x; $i++){
+		$in_out_base = $in_out_base."0";
+	}
+	# add the 1
+	$in_out_base = $in_out_base."1";
+	# print "hi ",$in_out_base," hi\n";
+	for ($y = ($x+1) ; $y < 18 ; $y++ ) {
+		# add zeros between 1 and 2
+		$in_out = $in_out_base;
+		for(my $i = ($x+1); $i < $y; $i++){
+			$in_out = $in_out."0";
+		}
+		# add the 2	
+		$in_out = $in_out."2";
+		# add zeros between 2 and calmel
+		for(my $i = ($y+1); $i < 18; $i++){
+			$in_out = $in_out."0";
+		}
+		$in_out = $in_out."34";			
+		#print $in_out,"\n";
+		push(@samples, $in_out);
+	} # end $y
+} # end $x
+
+my $input;
+my $output;
+my $commandline;
+
+foreach my $sample ( @samples ) {
+	foreach my $chr ( @chrs ) {
+		$input = "combined_".$chr.".g.vcf.gz_".$chr."_GenotypedSNPs.vcf.gz_filtered.vcf.gz_filtered_removed.vcf.gz.tab";
+		$output = $chr."_pattern12_".$sample.".output";
+		$commandline = "perl Parse_pattern_1_and_2_tetraploids.pl ".$input." ".$sample." ".$chr."_pattern12_".$sample.".out";
+		print $commandline,"\n";
+		system($commandline)
+    	#system("echo; echo $_; echo");
+	}
+}
 ```
