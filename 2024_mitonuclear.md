@@ -98,7 +98,7 @@ minimap2 --splice --secondary=no -t8 /home/ben/projects/rrg-ben/ben/2020_mellotr
 
 # get coordinates of the matches
 ```
-cut -f2,9,10 XT_pars2_to_Germany.out > hitz.bed
+cut -f6,8,9 XT_pars2_to_Germany.out > hitz.bed
 ```
 # modify the hitz.bed to make sure start < end
 
