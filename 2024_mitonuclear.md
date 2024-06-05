@@ -78,6 +78,24 @@ sub MFAtoPHYLIP
 module load  StdEnv/2020  gcc/9.3.0 blast+/2.14.0
 blastn -query XT_pars2.fa -db /project/6019307/ben/2020_mellotrop_RNA/Germany_genome/Super_NovaXeno_mega_gt200.fasta_blastable -outfmt 6 -out XT_pars2_to_Germany.out
 ```
+# map XT gene to PacBio seqs
+```
+#!/bin/sh
+#SBATCH --job-name=minmap
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --time=24:00:00
+#SBATCH --mem=64gb
+#SBATCH --output=minmap.%J.out
+#SBATCH --error=minmap.%J.err
+#SBATCH --account=rrg-ben
+
+# minimap2 -x asm10 -a --secondary=no -t8 reference.fasta query.fasta >alignments.sam
+module load StdEnv/2020 minimap2/2.24
+
+minimap2 --splice --secondary=no -t8 /home/ben/projects/rrg-ben/ben/2020_mellotrop_RNA/2023_Mello_PacBio/2017_mellotropicalis_PacBio/all_mello_pacbio.fasta XT_${1}.fa >${1}_to_pacbio.paf
+```
+
 # get coordinates of the matches
 ```
 cut -f2,9,10 XT_pars2_to_Germany.out > hitz.bed
